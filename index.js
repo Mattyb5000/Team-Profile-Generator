@@ -2,6 +2,10 @@
 
 // You would first require ALL of the files and node packages needed
 // Engineer, Manager, Intern, 
+const Employee = require("./lib/Employee");
+const Manager = require("./lib/Manager");
+const Engineer = require("./lib/Engineer");
+const Intern = require("./lib/Intern")
 
 // REQUIRE that page-template.js
 // We are receiving that anonymous function

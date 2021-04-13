@@ -1,17 +1,68 @@
 // generate the HTML pages
 const generateTeam = team => {
-     // A method for a template to render manager info
-
+    const html = "";
+    team.forEach((employee) => {
+        if (employee.getRole() === "Manager") {
+            html += generateManager(employee);
+        }
+        if (employee.getRole() === "Engineer") {
+            html += generateEngineer(employee);
+        }
+        if (employee.getRole() === "Intern") {
+            html += generateIntern(employee);
+        }
+    })
+    // A method for a template to render manager info
+    const generateManager = manager => {
+        return `<div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">${manager.getName()}</h5>
+          <h6 class="card-title">${manager.getRole()}</h6>
+          <p class="card-text">${manager.getID()}</p>
+          <p class="card-text"><a href="${manager.getEmail()}">${manager.getEmail()}</a></p>
+          <p class="card-text">${manager.getOfficeNumber()}</p>
+        </div>
+      </div>`
+    }
     // A method for a template to render engineer info
-
+    const generateEngineer = engineer => {
+        //put HTML template here
+        return `<div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">${engineer.getName()}</h5>
+          <h6 class="card-title">${engineer.getRole()}</h6>
+          <p class="card-text">${engineer.getID()}</p>
+          <p class="card-text"><a href="${engineer.getEmail()}">${engineer.getEmail()}</a></p>
+          <p class="card-text"><a href="https://github.com/${engineer.getGithub}" class="card-link">${engineer.getGithub}</a></p>
+        </div>
+      </div>`
+    }
     // A method for a template to render intern info
-const  generateManager = manager = {
-    return `${manager.getName()} etc etc`
-}
-const html = [];
+    const generateIntern = intern => {
+        //put HTML template here
+        return `<div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">${manager.getName()}</h5>
+          <h6 class="card-title">${intern.getRole()}<</h6>
+          <p class="card-text">${intern.getID()}</p>
+          <p class="card-text"><a href="${intern.getEmail()}">${intern.getEmail()}</a></p>
+          <p class="card-text">${intern.getSchool()}</p>
+        </div>
+      </div>`
+    }
+
+    const html = [];
     html.push(team
         .filter(employee => employee.getRole() === "Manager")
         .map(manager => generateManager(manager))
+    );
+    html.push(team
+        .filter(employee => employee.getRole() === "Intern")
+        .map(intern => generateIntern(intern)) //this needs to call a function for the intern employee type (function like the one on line 8)
+    );
+    html.push(team
+        .filter(employee => employee.getRole() === "Engineer")
+        .map(engineer => generateEngineer(engineer)) // this needs to call a function for the engineer employee type
     );
     return html.join("");
 }
@@ -42,7 +93,7 @@ module.exports = team => {
         <div class="row">
             <div class="team-area col-12 d-flex justify-content-center">
                 YOUR METHOD GOES HERE THE CARDS OF MANAGER, INTERN, ENGINEER WILL BE. 
-                ${someFunction(team)}
+                ${generateTeam(team)}
             </div>
         </div>
     </div>
