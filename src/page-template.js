@@ -1,4 +1,9 @@
 // generate the HTML pages
+const Employee = require("../lib/Employee");
+const Manager = require("../lib/Manager");
+const Engineer = require("../lib/Engineer");
+const Intern = require("../lib/Intern")
+
 const generateTeam = team => {
     const html = "";
     team.forEach((employee) => {
@@ -51,20 +56,20 @@ const generateTeam = team => {
       </div>`
     }
 
-    const html = [];
-    html.push(team
+    const generateHtml = [];
+    generateHtml.push(team
         .filter(employee => employee.getRole() === "Manager")
         .map(manager => generateManager(manager))
     );
-    html.push(team
+    generateHtml.push(team
         .filter(employee => employee.getRole() === "Intern")
         .map(intern => generateIntern(intern)) //this needs to call a function for the intern employee type (function like the one on line 8)
     );
-    html.push(team
+    generateHtml.push(team
         .filter(employee => employee.getRole() === "Engineer")
         .map(engineer => generateEngineer(engineer)) // this needs to call a function for the engineer employee type
     );
-    return html.join("");
+    return generateHtml.join("");
 }
 
 // We are exporting out an anonymous function
