@@ -10,27 +10,10 @@ const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern")
 const employeeArray = [];
-//   ...Inquirer prompt and the functions that will ask users about manager, intern, and engineer.
 
-
-// function runApp() {
-// You would first require ALL of the files and node packages needed
-// Engineer, Manager, Intern, 
-
-
-// REQUIRE that page-template.js
-// We are receiving that anonymous function
-// Giving the name of pageTemplate
-
-// And now, we can use that pageTemplate as a function, which can ACCEPT a parameter
 pageTemplate(employeeArray);
-// INDEX FILES ARE CONSIDERED THE ENTRY POINT TO YOUR APPLICATION
-
-// IF THIS IS YOUR ENTRY POINT, YOU MUST DO YOUR INQUIRER HERE
-
 
 const inquirer = require('inquirer');
-// declare function to kick off prompts 
 function runApp() {
     createManager()
 
@@ -63,7 +46,6 @@ function runApp() {
             buildTeam();
         })
         function buildTeam() {
-            // Create the output directory if the output path doesn't exist
             if (!fs.existsSync(OUTPUT_DIR)) {
                 fs.mkdirSync(OUTPUT_DIR)
             }
